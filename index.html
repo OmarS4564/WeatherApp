@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="info"><p>Type a city name into the search bar, press enter or the search icon, and view the current weather details.</p></div>
+      <div class="search">
+        <input type="text" placeholder="Milwaukee" spellcheck="false" />
+        <button><img src="WeatherIcons/search.png" alt="" /></button>
+      </div>
+      <div class="error">
+        <p>City is invalid.</p>
+      </div>
+      <div class="weather">
+        <img src="WeatherIcons/rain.png" class="weatherIcon" alt="" />
+        <h1 class="city"></h1>
+        <h2 class="temp"></h2>
+        <h3 class="type"></h3>        
+        <div class="details">
+          <div class="col">
+            <img src="WeatherIcons/humidity.png" alt="" />
+            <div>
+              <p class="humidity"></p>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="col" style="margin-left: 10px;">
+            <img src="WeatherIcons/wind.png" alt="" />
+            <div>
+              <p class="wind"></p>
+              <p>Wind Speed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
