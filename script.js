@@ -14,41 +14,44 @@ async function getWeather(city) {
   } else {
     var weatherJson = await response.json();
 
-    var weatherType = weatherJson.weather[0].main;
+    var weatherType = "";
+    if(weatherJson.weather && weatherJson !== undefined) {
+      weatherType = weatherJson.weather[0].main;
     
-    document.querySelector(".city").innerHTML = weatherJson.name;
-    document.querySelector(".humidity").innerHTML = weatherJson.main.humidity + "%";
-    document.querySelector(".type").innerHTML = weatherType;
-    document.querySelector(".temp").innerHTML = Math.round(weatherJson.main.temp) + "°F";
-    document.querySelector(".wind").innerHTML = Math.round(weatherJson.wind.speed) + " mph";
+      document.querySelector(".city").innerHTML = weatherJson.name;
+      document.querySelector(".humidity").innerHTML = weatherJson.main.humidity + "%";
+      document.querySelector(".type").innerHTML = weatherType;
+      document.querySelector(".temp").innerHTML = Math.round(weatherJson.main.temp) + "°F";
+      document.querySelector(".wind").innerHTML = Math.round(weatherJson.wind.speed) + " mph";
 
-    switch (weatherType) {
-      case "Clouds":
-        weatherIcon.src = "WeatherIcons/clouds.png";
-        break;
-      case "Rain":
-        weatherIcon.src = "WeatherIcons/rain.png";
-        break;
-      case "Clear":
-        weatherIcon.src = "WeatherIcons/clear.png";
-        break;
-      case "Drizzle":
-        weatherIcon.src = "WeatherIcons/drizzle.png";
-        break;
-      case "Mist":
-        weatherIcon.src = "WeatherIcons/mist.png";
-        break;
-      case "Snow":
-        weatherIcon.src = "WeatherIcons/snow.png";
-        break;
-      case "Thunderstorm":
-        weatherIcon.src = "WeatherIcons/thunderstorm.png";
-        break;
+      switch (weatherType) {
+        case "Clouds":
+          weatherIcon.src = "WeatherIcons/clouds.png";
+          break;
+        case "Rain":
+          weatherIcon.src = "WeatherIcons/rain.png";
+          break;
+        case "Clear":
+          weatherIcon.src = "WeatherIcons/clear.png";
+          break;
+        case "Drizzle":
+          weatherIcon.src = "WeatherIcons/drizzle.png";
+          break;
+        case "Mist":
+          weatherIcon.src = "WeatherIcons/mist.png";
+          break;
+        case "Snow":
+          weatherIcon.src = "WeatherIcons/snow.png";
+          break;
+        case "Thunderstorm":
+          weatherIcon.src = "WeatherIcons/thunderstorm.png";
+          break;
+      }
+
+      document.querySelector(".weather").style.display = "block";
+      document.querySelector(".error").style.display = "none";
     }
-
-    document.querySelector(".weather").style.display = "block";
-    document.querySelector(".error").style.display = "none";
-  }
+  } 
 }
 
 searchBtn.addEventListener("click", () => {
@@ -57,7 +60,7 @@ searchBtn.addEventListener("click", () => {
 
 searchBox.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-        getWeather(searchBox.value);
+      getWeather(searchBox.value);
     }
 });
 
